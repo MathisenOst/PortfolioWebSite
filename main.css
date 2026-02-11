@@ -76,7 +76,8 @@ nav ul.menu li {
 }
 nav ul.menu li a {
   display: block;
-  padding: .5rem 3rem;
+ /* padding: .5rem 3rem;*/
+  padding: .5rem .5rem;
   color: #f3f3f3;
   text-decoration: none;
   border-right: 1px solid #f3f3f3;
