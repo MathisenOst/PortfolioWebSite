@@ -168,6 +168,7 @@ nav ul.menu li.active a {
     align-items: center;
     min-height: 48px; /* touch-friendly */
     line-height: 1;
+     text-align:left;
   }
    
   /* If you added .mobile-title, keep a small gap from the icon/text */
