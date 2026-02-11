@@ -157,18 +157,28 @@ nav ul.menu li.active a {
   .nav-toggle-label {
     display: inline-flex;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center; /* center horizontally */
     gap: .5rem;
     align-items: center;
+     text-align: center;      /* centers any text nodes */
     min-height: 48px; /* touch-friendly */
     line-height: 1;
   }
    
-  /* Hide your desktop header title on mobile */
-  header h1 {
-    display: none;
+  /* If you added .mobile-title, keep a small gap from the icon/text */
+  .nav-toggle-label .mobile-title {
+    margin-left: .5rem; /* adjust as you like */
   }
 
+   
+  /* Hide your desktop header title on mobile */
+  header h1 {
+    display: none !important;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
 
   /* Force stacking: kill floats and make full width */
   nav ul.menu > li {
