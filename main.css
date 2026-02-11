@@ -1,23 +1,29 @@
-/* Css reset*/
+
+/* ================================
+   Css reset
+===================================*/
 body, p, h1,h2, h3, h4, h5, h6 {
     padding: 0;
     margin: 0;
-  
-
 }
+
 /* box model fix here */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
 
-
+/* ================================
+   Base
+===================================*/
 body {
     font-family: 'Signika',sans-serif;
     font-weight: 300;
     color: #333;
     background-color: white;
     font-size: 16px;
-    
 }
-/* Header */
+
+/* ================================
+   Header
+===================================*/
 header {
     background-color: #f3f3f3;
 }
@@ -34,11 +40,16 @@ header h2 {
     font-size: 1.5rem;
 }
 
-/* navigation  */
+/* ================================
+   Navigation (desktop defaults)
+===================================*/
 nav {
     background-color: gray;
     border-top: solid 2px black;
     border-bottom: solid 2px black;
+
+    /* NEW: for mobile absolute menu positioning */
+    position: relative;
 }
 
 nav ul.menu {
@@ -56,26 +67,25 @@ nav ul.menu li a {
    text-decoration: none;
    border-right: solid 1px #f3f3f3;
 }
-
 nav ul.menu li a:hover {
     background-color: #f3f3f3;
     color: gray;
 }
-
 nav ul.menu li.active a {
     color: #ebeaea;
     background-color: red;
 }
 
-
-/* main */
-
+/* ================================
+   Main
+===================================*/
 main {
     padding: .5rem 1.5%;
 }
 
-/* body */
-
+/* ================================
+   Footer  (unchanged)
+===================================*/
 footer {
     text-align:center;
     border-top: 1px solid #ccc;
@@ -83,8 +93,81 @@ footer {
     padding-bottom:10px;
 }
 
-
-/* Misc */
+/* ================================
+   Misc
+===================================*/
 div.keepOpen{
     clear: both;
 }
+
+/* ================================
+   NEW / MOBILE NAV: checkbox toggle & hamburger
+===================================*/
+
+/* Hide the raw checkbox */
+.nav-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Hamburger button (hidden on desktop by default, shown via media query) */
+.nav-toggle-label {
+    display: none; /* will show at <= 767px */
+    cursor: pointer;
+    padding: .75rem 1rem;
+    color: #f3f3f3;
+    background: gray;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    user-select: none;
+    align-items: center;
+}
+
+/* Three-line icon */
+.nav-toggle-label .burger,
+.nav-toggle-label .burger::before,
+.nav-toggle-label .burger::after {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: #f3f3f3;
+    position: relative;
+    transition: transform .25s ease, opacity .25s ease, top .25s ease;
+}
+
+.nav-toggle-label .burger::before,
+.nav-toggle-label .burger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+.nav-toggle-label .burger::before { top: -8px; }
+.nav-toggle-label .burger::after  { top: 8px; }
+
+/* Animate to an X when open */
+.nav-toggle:checked + .nav-toggle-label .burger {
+    background: transparent;
+}
+.nav-toggle:checked + .nav-toggle-label .burger::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+.nav-toggle:checked + .nav-toggle-label .burger::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+/* ================================
+   NEW / MOBILE NAV: collapsed vertical menu
+   Mobile-first hidden state. Desktop resets below.
+===================================*/
+nav ul.menu {
+    /* existing list styles kept above */
+    /* Mobile collapse behavior */
+    position: absolute;
+    top: 100%;      /* sits under the hamburger bar */
+    left: 0;
+    right: 0;
+    background: gray;
+    border-bottom: solid 2px black;
