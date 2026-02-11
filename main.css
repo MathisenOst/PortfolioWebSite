@@ -1,173 +1,84 @@
 
-/* ================================
-   Css reset
-===================================*/
-body, p, h1,h2, h3, h4, h5, h6 {
-    padding: 0;
-    margin: 0;
-}
-
-/* box model fix here */
-* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
-
-/* ================================
-   Base
-===================================*/
-body {
-    font-family: 'Signika',sans-serif;
-    font-weight: 300;
-    color: #333;
-    background-color: white;
-    font-size: 16px;
-}
-
-/* ================================
-   Header
-===================================*/
-header {
-    background-color: #f3f3f3;
-}
-header h1 {
-    color: black;
-    padding: .75rem 0 1% 1.5%;
-    font-size: 2rem;
-    letter-spacing: 3px;
-    font-family:'Times New Roman', Times, serif;
-}
-header h2 {
-    color: black;
-    padding: 1rem 0 0 2%;
-    font-size: 1.5rem;
-}
-
-/* ================================
-   Navigation (desktop defaults)
-===================================*/
-nav {
-    background-color: gray;
-    border-top: solid 2px black;
-    border-bottom: solid 2px black;
-
-    /* NEW: for mobile absolute menu positioning */
-    position: relative;
-}
-
+/* ===== Mobile-first collapsed menu IN FLOW (so it pushes content) ===== */
 nav ul.menu {
-    list-style-type: none; /* turn off children */
-    margin: 0;
-    padding: 0 ;
+  /* keep it in flow so it doesn’t cover the body */
+  position: static;
+  background: gray;
+  border-bottom: solid 2px black;
+
+  /* collapsed by default */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+  margin: 0;
+  padding: 0;
 }
+
+/* Open when toggled */
+.nav-toggle:checked ~ ul.menu {
+  max-height: 60vh; /* enough room for several items; adjust if needed */
+}
+
+/* ===== Mobile stacked items ===== */
 nav ul.menu li {
-    float: left;
+  float: none;                 /* stack vertically */
+  width: 100%;                 /* ensure full row */
+  border-top: 1px solid rgba(243,243,243,0.25);
+}
+nav ul.menu li:first-child {
+  border-top: none;
 }
 nav ul.menu li a {
-   display: block;
-   padding: .5rem 3rem;
-   color: #f3f3f3;
-   text-decoration: none;
-   border-right: solid 1px #f3f3f3;
-}
-nav ul.menu li a:hover {
-    background-color: #f3f3f3;
-    color: gray;
-}
-nav ul.menu li.active a {
-    color: #ebeaea;
-    background-color: red;
+  display: block;              /* full tap area */
+  width: 100%;
+  padding: 0.9rem 1rem;        /* touch-friendly */
+  color: #f3f3f3;
+  text-decoration: none;
+  border-right: none;          /* remove desktop divider on mobile */
 }
 
-/* ================================
-   Main
-===================================*/
-main {
-    padding: .5rem 1.5%;
-}
-
-/* ================================
-   Footer  (unchanged)
-===================================*/
-footer {
-    text-align:center;
-    border-top: 1px solid #ccc;
-    padding-top:20px;
-    padding-bottom:10px;
-}
-
-/* ================================
-   Misc
-===================================*/
-div.keepOpen{
-    clear: both;
-}
-
-/* ================================
-   NEW / MOBILE NAV: checkbox toggle & hamburger
-===================================*/
-
-/* Hide the raw checkbox */
-.nav-toggle {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Hamburger button (hidden on desktop by default, shown via media query) */
-.nav-toggle-label {
-    display: none; /* will show at <= 767px */
-    cursor: pointer;
+/* ===== Show hamburger and stacked layout on small screens ===== */
+@media (max-width: 767px) {
+  .nav-toggle-label {
+    display: inline-flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: .5rem;
+    align-items: center;
+    min-height: 48px;
     padding: .75rem 1rem;
     color: #f3f3f3;
     background: gray;
     border-top: solid 2px black;
     border-bottom: solid 2px black;
-    user-select: none;
-    align-items: center;
+  }
 }
 
-/* Three-line icon */
-.nav-toggle-label .burger,
-.nav-toggle-label .burger::before,
-.nav-toggle-label .burger::after {
+/* ===== Desktop: restore horizontal menu ===== */
+@media (min-width: 768px) {
+  .nav-toggle-label { display: none; }
+
+  nav ul.menu {
+    position: static;
+    max-height: none;
     display: block;
-    width: 26px;
-    height: 2px;
-    background: #f3f3f3;
-    position: relative;
-    transition: transform .25s ease, opacity .25s ease, top .25s ease;
-}
-
-.nav-toggle-label .burger::before,
-.nav-toggle-label .burger::after {
-    content: "";
-    position: absolute;
-    left: 0;
-}
-.nav-toggle-label .burger::before { top: -8px; }
-.nav-toggle-label .burger::after  { top: 8px; }
-
-/* Animate to an X when open */
-.nav-toggle:checked + .nav-toggle-label .burger {
     background: transparent;
-}
-.nav-toggle:checked + .nav-toggle-label .burger::before {
-    top: 0;
-    transform: rotate(45deg);
-}
-.nav-toggle:checked + .nav-toggle-label .burger::after {
-    top: 0;
-    transform: rotate(-45deg);
-}
+    border-bottom: none;
+    overflow: visible;
+  }
 
-/* ================================
-   NEW / MOBILE NAV: collapsed vertical menu
-   Mobile-first hidden state. Desktop resets below.
-===================================*/
-nav ul.menu {
-    /* existing list styles kept above */
-    /* Mobile collapse behavior */
-    position: absolute;
-    top: 100%;      /* sits under the hamburger bar */
-    left: 0;
-    right: 0;
-    background: gray;
-    border-bottom: solid 2px black;
+  nav ul.menu li {
+    float: left;          /* back to your original horizontal layout */
+    width: auto;
+    border-top: none;
+  }
+
+  nav ul.menu li a {
+    display: block;
+    padding: .5rem 3rem;
+    color: #f3f3f3;
+    text-decoration: none;
+    border-right: solid 1px #f3f3f3;
+  }
+}
+``
