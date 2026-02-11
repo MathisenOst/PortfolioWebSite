@@ -7,7 +7,12 @@ body, p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 * { box-sizing: border-box; }
-
+body {
+    font-family: 'Signika', sans-serif;
+   font-weight: 300;
+     color: #333;
+   font-size: 16px;
+  } 
 
 
 /* ================================
@@ -182,10 +187,7 @@ nav ul.menu li.active a {
   }
 
  body { 
-  font-weight: 300;
-  color: #333;
-  background-color: white;
-  font-size: 16px;
+
 }
 
    
@@ -258,10 +260,7 @@ body {
    background: linear-gradient(135deg, #ff00ff, #00ffff)
     /* Full viewport height ensures gradient fills the screen */
     min-height: 100vh;
-    font-family: 'Signika', sans-serif;
-   font-weight: 300;
-  color: #333;
-   font-size: 16px;
+  
   }   
 
   /* Centered content box, ~1 inch margins (varies by screen DPI) */
