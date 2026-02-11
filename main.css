@@ -8,13 +8,7 @@ body, p, h1, h2, h3, h4, h5, h6 {
 }
 * { box-sizing: border-box; }
 
-body {
-  font-family: 'Signika', sans-serif;
-  font-weight: 300;
-  color: #333;
-  background-color: white;
-  font-size: 16px;
-}
+
 
 /* ================================
    Header
@@ -187,6 +181,12 @@ nav ul.menu li.active a {
     text-align: left;  /* optional */
   }
 
+ body { 
+  font-weight: 300;
+  color: #333;
+  background-color: white;
+  font-size: 16px;
+}
 
    
   /* Hide your desktop header title on mobile */
@@ -257,7 +257,11 @@ body {
     background: linear-gradient(135deg, #eef2f7 0%, #e2e8f0 100%);
     /* Full viewport height ensures gradient fills the screen */
     min-height: 100vh;
-  }
+    font-family: 'Signika', sans-serif;
+   font-weight: 300;
+  color: #333;
+   font-size: 16px;
+  }   
 
   /* Centered content box, ~1 inch margins (varies by screen DPI) */
   .page {
