@@ -222,11 +222,16 @@ nav ul.menu li.active a {
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     overflow: hidden;    
+    
   }
 
-  header, nav, main, footer {
-    padding-left: 16px;
-    padding-right: 16px;
+  header, main, footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  nav {
+    padding-left: 4px;
+    padding-right: 4px;
   }
 }
 
