@@ -10,6 +10,7 @@ body {
   font-weight: 300;
   color: #333;
   font-size: 16px;
+  padding: 0 50px;
 }
 
 /* ================================
@@ -221,8 +222,7 @@ nav ul.menu li.active a {
     background: white;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    overflow: hidden;
-    padding: 2 20px;
+    overflow: hidden;    
   }
 
   header, nav, main, footer {
