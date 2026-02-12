@@ -53,35 +53,41 @@ nav::after {
   clear: both;
 }
 
-/* Menu base */
-nav ul.menu {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 
-  /* Mobile-first: keep in normal flow so it pushes content down */
-  position: static;
-  background: gray;
-  border-bottom: 2px solid black;
+  /* Desktop menu: visible, horizontal, full width */
+  nav ul.menu {
+    display: flex;        /* Enable flexbox */
+    width: 100%;          /* Full width of nav */
+    padding: 0;
+    margin: 0;
+    max-height: none;
+    overflow: visible;
+    background: transparent;
+    border-bottom: none;
+  }
 
-  /* Collapsed by default on mobile; opened via checkbox */
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .3s ease;
-}
 
 /* Desktop defaults (re-applied at >=768px) */
-nav ul.menu li {
-  float: left;
-}
+
+  /* Make each <li> item grow equally */
+  nav ul.menu li {
+    flex: 1;              /* Each item takes equal space */
+    border-top: none;
+  }
+
+
 nav ul.menu li a {
-  display: block;
- /* padding: .5rem 3rem;*/
-  padding: .5rem .5rem;
-  color: #f3f3f3;
-  text-decoration: none;
-  border-right: 1px solid #f3f3f3;
-}
+    display: flex;        /* Allows centering text */
+    justify-content: center;
+    align-items: center;
+    width: 100%;          /* Make link fill the entire flex item */
+    height: 100%;
+    padding: .75rem 0;    /* Vertical padding, horizontal not needed */
+    color: #f3f3f3;
+    text-decoration: none;
+    border-right: 1px solid #f3f3f3;
+  }
+
 nav ul.menu li a:hover {
   background-color: #f3f3f3;
   color: gray;
@@ -257,27 +263,15 @@ nav ul.menu li.active a {
     border-right: 1px solid #f3f3f3;
   }
 
-body {
-
- /* background-image: linear-gradient(135deg, #ff00ff, #00ffff) !important;*/
-   
-
-
-background-image: linear-gradient(
-  to bottom,
-  #ffffff 0%,
-  #eeeeee 35%,
-  #dddddd 70%,
-  #c9c9c9 100%
-);
-
-
-
-  /* background: linear-gradient(135deg, #ff00ff, #00ffff);*/
+body { 
+   background-image: linear-gradient(
+   to bottom,
+   #ffffff 0%,
+   #eeeeee 35%,
+   #dddddd 70%,
+   #c9c9c9 100%); 
     /* Full viewport height ensures gradient fills the screen */
-   min-height: 100vh;
-  /* background-color: pink;*/
-  
+   min-height: 100vh;  
   }   
 
   /* Centered content box, ~1 inch margins (varies by screen DPI) */
