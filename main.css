@@ -222,7 +222,7 @@ nav ul.menu li.active a {
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     overflow: hidden;
-    padding: 2 2rem;
+    padding: 2 20px;
   }
 
   header, nav, main, footer {
