@@ -10,7 +10,6 @@ body {
   font-weight: 300;
   color: #333;
   font-size: 16px;
- 
 }
 
 /* ================================
@@ -214,7 +213,6 @@ nav ul.menu li.active a {
       #c9c9c9 100%
     );
     min-height: 100vh;
-   
   }
 
   .page {
@@ -224,7 +222,6 @@ nav ul.menu li.active a {
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     overflow: hidden;    
-    padding-left: 100px
   }
 
   header, nav, main, footer {
